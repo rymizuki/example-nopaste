@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: './api'
+      dockerfile: 'Dockerfile'
+    links:
+      - mysql
+    ports:
+      - 50100:3000
+    volumes:
+      - ./api:/usr/local/docker/app
+    env_file: .env
+    environment: []
+    command: ['./bin/dev']
+    restart: always
+    stdin_open: true
+    tty: true
+
+  mysql:
+    build:
+      context: './mysql'
+      dockerfile: 'Dockerfile'
+    links: []
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/schema:/docker-entrypoint-initdb.d
+    restart: always
+    environment: {}
+    env_file: ./.env

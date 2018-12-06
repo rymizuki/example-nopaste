@@ -1,0 +1,52 @@
+---
+namespace: NoPaste
+services:
+  config:
+    class: Config
+    method: load
+    args:
+      - './config.yml'
+
+  config.dbh.dsn:
+    class: '@config'
+    method: 'get'
+    args:
+      - 'dbh.dsn'
+  config.dbh.user:
+    class: '@config'
+    method: 'get'
+    args:
+      - 'dbh.user'
+  config.dbh.pass:
+    class: '@config'
+    method: 'get'
+    args:
+      - 'dbh.pass'
+
+  infra.dbh:
+    class: +DBIx::Sunny
+    method: connect
+    args:
+      - '@config.dbh.dsn'
+      - '@config.dbh.user'
+      - '@config.dbh.pass'
+
+  infra.db.select.post:
+    class: Infra::DB::Select::Post
+    args:
+      - '@infra.dbh'
+
+  fetcher.posts:
+    class: Infra::Fetcher::Posts
+    args: 
+      - '@infra.db.select.post'
+
+  entity.retrieve:
+    class: Domain::Entity::Retrieve
+    args:
+      - '@fetcher.posts'
+
+  scenario.retrieve:
+    class: Domain::Scenario::Retrieve
+    args:
+      - '@entity.retrieve'

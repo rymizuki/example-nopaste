@@ -1,0 +1,2 @@
+#!/bin/sh
+carton exec perl ./app.pl daemon -l "http://*:3000"

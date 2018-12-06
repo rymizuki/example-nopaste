@@ -1,0 +1,17 @@
+requires 'Mojolicious';
+requires 'Data::Page::NoTotalEntries';
+requires 'Data::Validator';
+requires 'DateTimeX::Moment';
+requires 'DBD::mysql';
+requires 'DBIx::Sunny';
+requires 'Exporter::Lite';
+requires 'File::Slurp';
+requires 'JSON::Types';
+requires 'Mouse';
+requires 'Scalar::Util';
+requires 'Try::Lite';
+requires 'YAML::Tiny';
+
+on develop => sub {
+  requires 'DDP';
+};

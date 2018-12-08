@@ -173,6 +173,19 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.48
       Test::Simple 0.90
       perl 5.008
+  DBIx-QueryLog-0.41
+    pathname: X/XA/XAICRON/DBIx-QueryLog-0.41.tar.gz
+    provides:
+      DBIx::QueryLog 0.41
+    requirements:
+      DBI 0
+      Data::Dumper 0
+      ExtUtils::MakeMaker 6.59
+      Module::Build 0.38
+      Term::ANSIColor 0
+      Text::ASCIITable 0
+      Time::HiRes 0
+      perl 5.008001
   DBIx-Sunny-0.9991
     pathname: S/SO/SONGMU/DBIx-Sunny-0.9991.tar.gz
     provides:
@@ -1443,6 +1456,16 @@ DISTRIBUTIONS
       Test::Builder::Module 0
       Test::More 0.47
       perl 5.006
+  Text-ASCIITable-0.22
+    pathname: L/LU/LUNATIC/Text-ASCIITable-0.22.tar.gz
+    provides:
+      Text::ASCIITable 0.22
+      Text::ASCIITable::Wrap 0.2
+    requirements:
+      Carp 0
+      Encode 0
+      List::Util 0
+      perl v5.6.0
   Tie-IxHash-1.23
     pathname: C/CH/CHORNY/Tie-IxHash-1.23.tar.gz
     provides:

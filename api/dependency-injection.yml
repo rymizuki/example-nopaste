@@ -35,17 +35,35 @@ services:
     class: Infra::DB::Select::Post
     args:
       - '@infra.dbh'
+  infra.db.query.post:
+    class: Infra::DB::Query::Post
+    args:
+      - '@infra.dbh'
 
   fetcher.posts:
     class: Infra::Fetcher::Posts
     args: 
       - '@infra.db.select.post'
 
+  repository.post:
+    class: Infra::Repository::Post
+    args:
+      - '@infra.db.query.post'
+
+  entity.register:
+    class: Domain::Entity::Register
+    args:
+      - '@repository.post'
+
   entity.retrieve:
     class: Domain::Entity::Retrieve
     args:
       - '@fetcher.posts'
 
+  scenario.register:
+    class: Domain::Scenario::Register
+    args:
+      - '@entity.register'
   scenario.retrieve:
     class: Domain::Scenario::Retrieve
     args:

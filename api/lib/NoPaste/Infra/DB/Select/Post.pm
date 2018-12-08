@@ -10,16 +10,10 @@ sub new {
 __PACKAGE__->select_all(
     'retrieve' => (
         _deleted_fg => 'Bool',
+        offset => 'Int',
         limit => 'Int',
-        offset => 'Int'
     ),
-    <<SQL,
-SELECT *
-FROM post
-WHERE _deleted_fg = ?
-ORDER BY _created_at DESC
-LIMIT ?, ?
-SQL
+    'SELECT * FROM post WHERE _deleted_fg = ? ORDER BY _created_at DESC LIMIT ?, ?'
 );
 
 1;

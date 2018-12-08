@@ -9,6 +9,14 @@ NoPaste::DIContainer->load(
   config_file => './dependency-injection.yml',
 );
 
+post '/posts' => sub ($c) {
+  my $title = $c->param('title');
+  my $content = $c->param('content');
+  my $post = container->get('scenario.register')->run($title, $content);
+
+  $c->render(json => +{ post => $post->to_json() });
+};
+
 get '/posts' => sub ($c) {
   my $page = $c->param('page');
   my $posts = container->get('scenario.retrieve')->run($page);

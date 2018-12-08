@@ -47,7 +47,7 @@ sub retrieve {
                 content => $_->{content},
             )
         } @$rows ],
-        pager =>  NoPaste::Domain::Entity::Pager->new(
+        pager => NoPaste::Domain::Entity::Pager->new(
             current_page => $page,
             has_next => $has_next,
             entries_per_page => $limit,
